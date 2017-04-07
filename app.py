@@ -53,7 +53,8 @@ def main_page():
 		#print(json.dumps(context['user'][1]['category_name'],indent=4))
 		response = conversation.message(workspace_id = conv_workspace_id, message_input={'text': request.form['message']},context = context)
    		audio_file = open("audio/output.wav","wb")
-   		audio_file.write(text_to_speech.synthesize("hello world!" , accept='audio/wav',voice="en-US_AllisonVoice"))
+   		stream = text_to_speech.synthesize("hello world!" , accept='audio/wav',voice="en-US_AllisonVoice")
+   		print(stream)
 		#print(json.dumps(text_to_speech.pronunciation('Watson', pronunciation_format='spr'), indent=2))
 
 		#print(json.dumps(text_to_speech.customizations(), indent=2))
