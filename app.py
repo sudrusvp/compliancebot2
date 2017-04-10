@@ -61,7 +61,8 @@ def main_page():
 #			if(aline != ""):
 #				print(aline)
 #			else:
-#				done = 0
+#				print("No data in file")
+#				done = 1
 		#print(json.dumps(text_to_speech.pronunciation('Watson', pronunciation_format='spr'), indent=2))
 		
 		
