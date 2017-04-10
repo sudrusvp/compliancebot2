@@ -58,7 +58,7 @@ def main_page():
 		#print(json.dumps(text_to_speech.pronunciation('Watson', pronunciation_format='spr'), indent=2))
 
 		#print(json.dumps(text_to_speech.customizations(), indent=2))
-		print(json.dumps(response,indent=2))
+		#print(json.dumps(response,indent=2))
 		a = str(context['user'][0]['category_name']) + "--->" + str(context['user'][0]['tones'][0]['tone_name']) + "-" + str(round(context['user'][0]['tones'][0]['score'],2))
 		b = str(context['user'][0]['tones'][1]['tone_name']) + "-" + str(round(context['user'][0]['tones'][1]['score'],2))
 		c = str(context['user'][0]['tones'][2]['tone_name']) + "-" + str(round(context['user'][0]['tones'][2]['score'],2))
