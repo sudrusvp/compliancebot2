@@ -53,10 +53,18 @@ def main_page():
 		#print(json.dumps(context['user'][1]['category_name'],indent=4))
 		response = conversation.message(workspace_id = conv_workspace_id, message_input={'text': request.form['message']},context = context)
 		with open(join(dirname(__file__), 'audio/output.wav'),'wb') as audio_file:
-			audio_file.write(text_to_speech.synthesize('Hello world!', accept='audio/wav',voice="en-US_AllisonVoice"))
-		print(text_to_speech.synthesize('Hello world!', accept='audio/wav',voice="en-US_AllisonVoice"))
+			audio_file.write(text_to_speech.synthesize(text='Hello world!', accept='audio/wav',voice="en-US_AllisonVoice"))
+#		file = open('audio/output.wav','rb')
+#		done = 0
+#		while not done:
+#			aline = file.readline()
+#			if(aline != ""):
+#				print(aline)
+#			else:
+#				done = 0
 		#print(json.dumps(text_to_speech.pronunciation('Watson', pronunciation_format='spr'), indent=2))
-
+		
+		
 		#print(json.dumps(text_to_speech.customizations(), indent=2))
 		#print(json.dumps(response,indent=2))
 		a = str(context['user'][0]['category_name']) + "--->" + str(context['user'][0]['tones'][0]['tone_name']) + "-" + str(round(context['user'][0]['tones'][0]['score'],2))
