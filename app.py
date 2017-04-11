@@ -53,16 +53,16 @@ def main_page():
 		#print(json.dumps(context['user'][1]['category_name'],indent=4))
 		response = conversation.message(workspace_id = conv_workspace_id, message_input={'text': request.form['message']},context = context)
 		with open(join(dirname(__file__), 'audio/output.wav'),'wb') as audio_file:
-			audio_file.write(text_to_speech.synthesize(text='Hello world!', accept='audio/wav',voice="en-US_AllisonVoice"))
-#		file = open('audio/output.wav','rb')
-#		done = 0
-#		while not done:
-#			aline = file.readline()
-#			if(aline != ""):
-#				print(aline)
-#			else:
-#				print("No data in file")
-#				done = 1
+			audio_file.write(text_to_speech.synthesize(text='I am sudarshan panchal', accept='audio/wav',voice="en-US_AllisonVoice"))
+		file = open('audio/output.wav','rb')
+		done = 0
+		while not done:
+			aline = file.readline()
+			if(aline != ""):
+				print("data available")
+			else:
+				print("No data in file")
+				done = 1
 		#print(json.dumps(text_to_speech.pronunciation('Watson', pronunciation_format='spr'), indent=2))
 		
 		
@@ -132,7 +132,7 @@ def main_page():
 			response = response + newline + i + " " + j + " "+ k + " "+ l + " "+ m
 #			response = response + newline + " detected " + final_emotiontone + newline + " detected " + final_langtone + newline + " detected " + final_socialtone
 			response = response + newline + "<html><body><hr></body></html>"
-			script = """<html><head><link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css'>
+			script1 = """<html><head><link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css'>
 			</head>
 			<body>
 			<a href='#' class='btn btn-info btn-lg' onclick='yes()'>
@@ -144,7 +144,13 @@ def main_page():
 			</body>
 			</html>"""
 			
-			response = response + script
+			response = response + script1
+			script2 = """<html><body><hr><audio controls>
+  			<source src='audio/output.wav' type='audio/wav'>
+			</audio>
+			</body>
+			</html>"""
+			response = response + script2
 			return str(response)
 			
 		#else
