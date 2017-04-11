@@ -146,7 +146,7 @@ def main_page():
 			
 			response = response + script1
 			script2 = """<html><body><hr><audio controls>
-  			<source src='audio/output.wav' type='audio/wav'>
+  			<source src='audio/horse.ogg' type='audio/ogg'>
 			</audio>
 			</body>
 			</html>"""
