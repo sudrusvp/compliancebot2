@@ -155,7 +155,7 @@ def main_page():
 			script2 = """<!DOCTYPE html> <html>
 			<body>
 			<audio controls autoplay style=" visibility: hidden;">
-			<source src="static/media/horse.ogg" type="audio/ogg">
+			<source src="static/media/output.ogg" type="audio/ogg">
 			</audio>
 			</body>
 			</html>"""
