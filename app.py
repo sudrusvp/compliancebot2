@@ -53,7 +53,9 @@ def main_page():
 		#print(json.dumps(context['user'][1]['category_name'],indent=4))
 		response = conversation.message(workspace_id = conv_workspace_id, message_input={'text': request.form['message']},context = context)
 		with open(join(dirname(__file__), 'static/media/output.ogg'),'wb+') as audio_file:
-			audio_file.write(text_to_speech.synthesize("str(response['output']['text'][0])", accept="audio/ogg;codecs=opus",voice="en-US_AllisonVoice"))
+			audio_file.seek(0)
+			audio_file.truncate()
+			audio_file.write(text_to_speech.synthesize("yoooooooooooooooooooooo", accept="audio/ogg;codecs=opus",voice="en-US_AllisonVoice"))
 #		file = open('audio/output.ogg','wb')
 #		file.write(text_to_speech.synthesize("I am sudarshan panchal", accept="audio/ogg;codecs=opus",voice="en-US_AllisonVoice"));
 #		file.close()
