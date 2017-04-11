@@ -52,8 +52,11 @@ def main_page():
 		}
 		#print(json.dumps(context['user'][1]['category_name'],indent=4))
 		response = conversation.message(workspace_id = conv_workspace_id, message_input={'text': request.form['message']},context = context)
-		with open(join(dirname(__file__), 'audio/output.wav'),'wb') as audio_file:
-			audio_file.write(text_to_speech.synthesize(text='I am sudarshan panchal', accept='audio/wav',voice="en-US_AllisonVoice"))
+#		with open(join(dirname(__file__), 'audio/output.wav'),'wb') as audio_file:
+#			audio_file.write(text_to_speech.synthesize(text='I am sudarshan panchal', accept='audio/wav',voice="en-US_AllisonVoice"))
+		file = open('audio/output.ogg',wb+)
+		file.write(text_to_speech.synthesize(text='I am sudarshan panchal', accept='audio/ogg;codecs=opus',voice="en-US_AllisonVoice"));
+		file.close()
 		file = open('audio/output.wav','rb')
 		done = 0
 		while not done:
@@ -145,12 +148,6 @@ def main_page():
 			</html>"""
 			
 			response = response + script1
-			script2 = """<html><body><hr><audio controls>
-  			<source src='audio/horse.ogg' type='audio/ogg'>
-			</audio>
-			</body>
-			</html>"""
-			response = response + script2
 			return str(response)
 			
 		#else
