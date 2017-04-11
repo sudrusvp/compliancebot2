@@ -57,7 +57,7 @@ def main_page():
 		file = open('audio/output.ogg',wb+)
 		file.write(text_to_speech.synthesize(text='I am sudarshan panchal', accept='audio/ogg;codecs=opus',voice="en-US_AllisonVoice"));
 		file.close()
-		file = open('audio/output.wav','rb')
+		file = open('audio/output.ogg','rb')
 		done = 0
 		while not done:
 			aline = file.readline()
