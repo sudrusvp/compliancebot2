@@ -151,6 +151,16 @@ def main_page():
 			</html>"""
 			
 			response = response + script1
+			
+			script2 = """<!DOCTYPE html> <html>
+			<body>
+			<audio controls>
+			<source src="audio/horse.ogg" type="audio/ogg">
+			</audio>
+			</body>
+			</html>"""
+			
+			response = response + script2
 			return str(response)
 			
 		#else
