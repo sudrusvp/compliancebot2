@@ -54,7 +54,7 @@ def main_page():
 		response = conversation.message(workspace_id = conv_workspace_id, message_input={'text': request.form['message']},context = context)
 #		with open(join(dirname(__file__), 'audio/output.wav'),'wb') as audio_file:
 #			audio_file.write(text_to_speech.synthesize(text='I am sudarshan panchal', accept='audio/wav',voice="en-US_AllisonVoice"))
-		file = open('audio/output.ogg',wb+)
+		file = open('audio/output.ogg','wb')
 		file.write(text_to_speech.synthesize(text='I am sudarshan panchal', accept='audio/ogg;codecs=opus',voice="en-US_AllisonVoice"));
 		file.close()
 		if os.path.isfile('audio/output.ogg'):
