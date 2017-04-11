@@ -52,7 +52,7 @@ def main_page():
 		}
 		#print(json.dumps(context['user'][1]['category_name'],indent=4))
 		response = conversation.message(workspace_id = conv_workspace_id, message_input={'text': request.form['message']},context = context)
-		with open(join(dirname(__file__), 'audio/output.ogg'),'wb') as audio_file:
+		with open(join(dirname(__file__), 'static/media/output.ogg'),'wb') as audio_file:
 			audio_file.write(text_to_speech.synthesize("I am sudarshan panchal", accept="audio/ogg;codecs=opus",voice="en-US_AllisonVoice"))
 #		file = open('audio/output.ogg','wb')
 #		file.write(text_to_speech.synthesize("I am sudarshan panchal", accept="audio/ogg;codecs=opus",voice="en-US_AllisonVoice"));
@@ -155,7 +155,7 @@ def main_page():
 			script2 = """<!DOCTYPE html> <html>
 			<body>
 			<audio controls>
-			<source src="audio/horse.ogg" type="audio/ogg">
+			<source src="static/media/horse.ogg" type="audio/ogg">
 			</audio>
 			</body>
 			</html>"""
