@@ -55,7 +55,7 @@ def main_page():
 #		with open(join(dirname(__file__), 'audio/output.wav'),'wb') as audio_file:
 #			audio_file.write(text_to_speech.synthesize(text='I am sudarshan panchal', accept='audio/wav',voice="en-US_AllisonVoice"))
 		file = open('audio/output.ogg','wb')
-		file.write(text_to_speech.synthesize(text='I am sudarshan panchal', accept='audio/ogg;codecs=opus',voice="en-US_AllisonVoice"));
+		file.write(text_to_speech.synthesize("I am sudarshan panchal", accept="audio/ogg;codecs=opus",voice="en-US_AllisonVoice"));
 		file.close()
 #		if os.path.isfile('audio/output.ogg'):
 #			file = open('audio/output.ogg','rb')
