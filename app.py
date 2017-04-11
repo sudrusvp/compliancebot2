@@ -52,7 +52,7 @@ def main_page():
 		}
 		#print(json.dumps(context['user'][1]['category_name'],indent=4))
 		response = conversation.message(workspace_id = conv_workspace_id, message_input={'text': request.form['message']},context = context)
-		with open(join(dirname(__file__), 'static/media/output.wav'),'wb') as audio_file:
+		with open(join(dirname(__file__), 'static/media/output.wav'),'wb+') as audio_file:
 			audio_file.seek(0)
 			audio_file.truncate()
 			audio_file.write(text_to_speech.synthesize(text = 'hello sudarshan!', accept="audio/wav",voice="en-US_AllisonVoice"))
