@@ -57,18 +57,18 @@ def main_page():
 		file = open('audio/output.ogg','wb')
 		file.write(text_to_speech.synthesize(text='I am sudarshan panchal', accept='audio/ogg;codecs=opus',voice="en-US_AllisonVoice"));
 		file.close()
-		if os.path.isfile('audio/output.ogg'):
-			file = open('audio/output.ogg','rb')
-			done = 0
-			while not done:
-				aline = file.readline()
-				if(aline != ""):
-					print("data available")
-				else:
-					print("No data in file")
-					done = 1
-		else:
-			print('File does not exists')
+#		if os.path.isfile('audio/output.ogg'):
+#			file = open('audio/output.ogg','rb')
+#			done = 0
+#			while not done:
+#				aline = file.readline()
+#				if(aline != ""):
+#					print("data available")
+#				else:
+#					print("No data in file")
+#					done = 1
+#		else:
+#			print('File does not exists')
 		#print(json.dumps(text_to_speech.pronunciation('Watson', pronunciation_format='spr'), indent=2))
 		
 		
