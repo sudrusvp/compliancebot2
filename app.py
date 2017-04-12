@@ -55,8 +55,8 @@ def main_page():
 		with open(join(dirname(__file__), 'static/media/output.wav'),'wb+') as audio_file:
 			audio_file.seek(0)
 			audio_file.truncate()
-			audio_file.write(text_to_speech.synthesize(text = 'hello sudarshan!', accept='audio/wav',voice='en-US_AllisonVoice'))
-#			audio_file.close()
+			audio_file.write(text_to_speech.synthesize('hello sudarshan!', accept='audio/wav',voice='en-US_AllisonVoice'))
+			audio_file.close()
 #		open('static/media/output.wav', 'w').close()
 #		os.remove('static/media/output.wav')
 #		file = open('static/media/output.wav','wb+')
