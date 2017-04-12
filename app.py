@@ -59,9 +59,9 @@ def main_page():
 #			audio_file.close()
 #		open('static/media/output.wav', 'w').close()
 #		os.remove('static/media/output.wav')
-		file = open('static/media/output.wav','wb')
-#		file.seek(0)
-#		file.truncate()
+		file = open('static/media/output.wav','wb+')
+		file.seek(0)
+		file.truncate()
 		file.write(text_to_speech.synthesize("Hello sid!",accept='audio/wav',voice='en-US_LisaVoice'));
 		file.close()
 #		if os.path.isfile('static/media/output.wav'):
