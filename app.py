@@ -60,7 +60,7 @@ def main_page():
 		file = open('static/media/output.wav','wb+')
 		file.seek(0)
 		file.truncate()
-		file.write(text_to_speech.synthesize("str(response['output']['text'][0])", accept="audio/wav",voice="en-US_AllisonVoice"));
+		file.write(text_to_speech.synthesize(text="Hello sudarshan vishwanath panchal", accept="audio/wav",voice="en-US_AllisonVoice"));
 		file.close()
 #		if os.path.isfile('audio/output.ogg'):
 #			file = open('audio/output.ogg','rb')
