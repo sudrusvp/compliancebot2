@@ -57,13 +57,15 @@ def main_page():
 #			audio_file.truncate()
 #			audio_file.write(text_to_speech.synthesize(text = 'hello sudarshan!', accept="audio/wav",voice="en-US_AllisonVoice"))
 #			audio_file.close()
-		open('static/media/output.wav', 'w').close()
-		file = open('static/media/output.wav','wb+')
+#		open('static/media/output.wav', 'w').close()
+		os.remove('static/media/output.wav')
+#		file = open('static/media/output.wav','wb+')
 #		file.seek(0)
 #		file.truncate()
-		file.write(text_to_speech.synthesize("Hello sid!",accept="audio/wav",voice="en-US_LisaVoice"));
-		file.close()
-#		if os.path.isfile('audio/output.ogg'):
+#		file.write(text_to_speech.synthesize("Hello sid!",accept="audio/wav",voice="en-US_LisaVoice"));
+#		file.close()
+		if os.path.isfile('static/media/output.wav'):
+			print("file exists")
 #			file = open('audio/output.ogg','rb')
 #			done = 0
 #			while not done:
@@ -73,8 +75,8 @@ def main_page():
 #				else:
 #					print("No data in file")
 #					done = 1
-#		else:
-#			print('File does not exists')
+		else:
+			print('File does not exists')
 		#print(json.dumps(text_to_speech.pronunciation('Watson', pronunciation_format='spr'), indent=2))
 		
 		
