@@ -62,7 +62,7 @@ def main_page():
 		file = open('static/media/output.wav','wb+')
 		file.seek(0)
 		file.truncate()
-		file.write(text_to_speech.synthesize("Hello watson!",accept='audio/wav',voice='en-US_LisaVoice'));
+		file.write(text_to_speech.synthesize("Hello watson boy!",accept='audio/wav',voice='en-US_LisaVoice'));
 		file.close()
 #		if os.path.isfile('static/media/output.wav'):
 #			print("file exists")
@@ -164,7 +164,7 @@ def main_page():
 			<body>
 			<hr>
 			<audio controls autoplay>
-			<source src="static/media/output.wav?j=10" type="audio/wav">
+			<source src="static/media/output.wav?cache-buster="+new Date().getTime() type="audio/wav">
 			</audio>
 			</body>
 			</html>"""
