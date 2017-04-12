@@ -57,19 +57,11 @@ def main_page():
 #			audio_file.truncate()
 #			audio_file.write(text_to_speech.synthesize(text = 'hello sudarshan!', accept="audio/wav",voice="en-US_AllisonVoice"))
 #			audio_file.close()
+		open('static/media/output.wav', 'w').close()
 		file = open('static/media/output.wav','wb+')
-		done = 0
-		while not done:
-			aline = file.readline()
-			if(aline != ""):
-				print("data available")
-				aline=""
-			else:
-				print("No data in file")
-				done = 1
-		file.seek(0)
-		file.truncate()
-		file.write(text_to_speech.synthesize("Hello sudarshan vishwanath panchal",accept="audio/ogg;codecs=opus",voice="en-US_LisaVoice"));
+#		file.seek(0)
+#		file.truncate()
+		file.write(text_to_speech.synthesize("Hello sid!",accept="audio/wav",voice="en-US_LisaVoice"));
 		file.close()
 #		if os.path.isfile('audio/output.ogg'):
 #			file = open('audio/output.ogg','rb')
