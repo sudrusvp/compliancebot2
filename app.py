@@ -164,7 +164,7 @@ def main_page():
 			<body>
 			<hr>
 			<audio controls autoplay>
-			<source src="static/media/output.wav?cache-buster="+new Date().getTime() type="audio/wav">
+			<source src="static/media/output.wav?cache-buster=new Date().getTime()" type="audio/wav">
 			</audio>
 			</body>
 			</html>"""
