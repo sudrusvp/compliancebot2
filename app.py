@@ -160,11 +160,16 @@ def main_page():
 			
 			response = response + script1
 			
-			script2 = """ <html>
+			script2 = """ <html><head>
+			<script type='text/javascript'>
+			function random(){
+				return Math.random()*10000000000;	
+			}
+			</script></head>
 			<body>
 			<hr>
 			<audio controls autoplay>
-			<source src="static/media/output.wav?cache-buster=new Date().getTime()" type="audio/wav">
+			<source src="static/media/output.wav?cache-buster=<script>random()</script>" type="audio/wav">
 			</audio>
 			</body>
 			</html>"""
