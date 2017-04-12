@@ -52,20 +52,20 @@ def main_page():
 		}
 		#print(json.dumps(context['user'][1]['category_name'],indent=4))
 		response = conversation.message(workspace_id = conv_workspace_id, message_input={'text': request.form['message']},context = context)
-		with open(join(dirname(__file__), 'static/media/output.wav'),'wb+') as audio_file:
-			audio_file.seek(0)
-			audio_file.truncate()
-			audio_file.write(text_to_speech.synthesize('hello sudarshan!', accept='audio/wav',voice='en-US_AllisonVoice'))
-			audio_file.close()
+#		with open(join(dirname(__file__), 'static/media/output.wav'),'wb+') as audio_file:
+#			audio_file.seek(0)
+#			audio_file.truncate()
+#			audio_file.write(text_to_speech.synthesize('hello sudarshan!', accept='audio/wav',voice='en-US_AllisonVoice'))
+#			audio_file.close()
 #		open('static/media/output.wav', 'w').close()
 #		os.remove('static/media/output.wav')
-#		file = open('static/media/output.wav','wb+')
+		file = open('static/media/output.wav','wb')
 #		file.seek(0)
 #		file.truncate()
-#		file.write(text_to_speech.synthesize("Hello sid!",accept="audio/wav",voice="en-US_LisaVoice"));
-#		file.close()
+		file.write(text_to_speech.synthesize("Hello sid!",accept='audio/wav',voice='en-US_LisaVoice'));
+		file.close()
 #		if os.path.isfile('static/media/output.wav'):
-			print("file exists")
+#			print("file exists")
 #			file = open('audio/output.ogg','rb')
 #			done = 0
 #			while not done:
