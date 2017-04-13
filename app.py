@@ -120,7 +120,7 @@ def main_page():
 			.button {
 			  display: inline-block;
 			  padding: 15px 25px;
-			  font-size: 24px;
+			  font-size: 17px;
 			  cursor: pointer;
 			  text-align: center;
 			  text-decoration: none;
