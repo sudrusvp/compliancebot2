@@ -4,35 +4,12 @@ import os
 import os.path
 import sys
 import logging
+import conversation
+import text_to_speech
+import tone_analyze
 from flask import Flask
 from flask import render_template
 from flask import request, url_for, make_response
-from watson_developer_cloud import ConversationV1
-from watson_developer_cloud import ToneAnalyzerV3
-from os.path import join, dirname
-from watson_developer_cloud import TextToSpeechV1
-
-
-conversation = ConversationV1(
-    username='81cae901-ee0e-4066-b333-c6d9cc5532ec',
-    password='NCdy2rD8GQ5N',
-    version='2017-02-03')
-
-conv_workspace_id = 'e5fa2b42-e839-4e1b-9c6d-4d3ca9a93330'
-context={}
-
-tone_analyzer = ToneAnalyzerV3(
-    username = '20c2903e-48a9-4fd5-8f0b-5e699fa5343e',
-    password = 'ZC2WBeLbXUXs',
-    version = '2016-05-19')
-
-#maintainToneHistoryInContext = True 
-
-text_to_speech = TextToSpeechV1(
-    username='8921eb13-5eb4-4286-9add-5a7870ba4ecf',
-    password='tKJBMhuw42nL',
-    x_watson_learning_opt_out=True)
-
 
 app = Flask(__name__, static_url_path='/static')
 
@@ -45,43 +22,19 @@ def main_page():
 	elif request.method == 'POST':
 		
 		tone = tone_analyzer.tone( text = request.form['message'])
-		#conversation_payload = tone_detection.updateUserTone(payload, tone, maintainToneHistoryInContext)
 		#print(json.dumps(tone,indent=2))
 		context = {
 			"user":tone['document_tone']['tone_categories']
 		}
 		#print(json.dumps(context['user'][1]['category_name'],indent=4))
 		response = conversation.message(workspace_id = conv_workspace_id, message_input={'text': request.form['message']},context = context)
-#		with open(join(dirname(__file__), 'static/media/output.wav'),'wb+') as audio_file:
-#			audio_file.seek(0)
-#			audio_file.truncate()
-#			audio_file.write(text_to_speech.synthesize('hello sudarshan!', accept='audio/wav',voice='en-US_AllisonVoice'))
-#			audio_file.close()
-#		open('static/media/output.wav', 'w').close()
-#		os.remove('static/media/output.wav')
+		
 		file = open('static/media/output.wav','wb+')
 		file.seek(0)
 		file.truncate()
 		file.write(text_to_speech.synthesize(str(response['output']['text'][0]),accept='audio/wav',voice='en-US_LisaVoice'));
 		file.close()
-#		if os.path.isfile('static/media/output.wav'):
-#			print("file exists")
-#			file = open('audio/output.ogg','rb')
-#			done = 0
-#			while not done:
-#				aline = file.readline()
-#				if(aline != ""):
-#					print("data available")
-#				else:
-#					print("No data in file")
-#					done = 1
-#		else:
-#			print('File does not exists')
-		#print(json.dumps(text_to_speech.pronunciation('Watson', pronunciation_format='spr'), indent=2))
 		
-		
-		#print(json.dumps(text_to_speech.customizations(), indent=2))
-		#print(json.dumps(response,indent=2))
 		a = str(context['user'][0]['category_name']) + "--->" + str(context['user'][0]['tones'][0]['tone_name']) + "-" + str(round(context['user'][0]['tones'][0]['score'],2))
 		b = str(context['user'][0]['tones'][1]['tone_name']) + "-" + str(round(context['user'][0]['tones'][1]['score'],2))
 		c = str(context['user'][0]['tones'][2]['tone_name']) + "-" + str(round(context['user'][0]['tones'][2]['score'],2))
