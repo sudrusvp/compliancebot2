@@ -132,10 +132,10 @@ def main_page():
 			  box-shadow: 0 9px #fff;
 			}
 			
-			.button:hover {background-color: #3e8e41}
+			.button:hover {background-color: #00BFFF}
 			
 			.button:active {
-			  background-color: #3e8e41;
+			  background-color: #00BFFF;
 			  box-shadow: 0 5px #666;
 			  transform: translateY(4px);
 			}
