@@ -1,3 +1,4 @@
+import json
 import urllib
 import os
 import os.path
@@ -24,6 +25,7 @@ def main_page():
 		tone = tone_analyzer1.tone( text = request.form['message'])
 		#print(json.dumps(tone,indent=2))
 		context = {
+			"next_node":"name",
 			"user":tone['document_tone']['tone_categories']
 		}
 		#print(json.dumps(context['user'][1]['category_name'],indent=4))
@@ -31,6 +33,10 @@ def main_page():
 
 		response = conversation_fun().message(workspace_id = conv_workspace_id, message_input={'text': request.form['message']},context = context)
 		
+#		if response['intents'] and response['intents'][0]['intent']:
+#			intent_name = str(response['intents'][0]['intent'])
+#			if intent_name == "name":
+				
 		
 		print(json.dumps(response,indent=4))
 		file = open('static/media/output.wav','wb+')
