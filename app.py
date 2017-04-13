@@ -27,9 +27,9 @@ def main_page():
 			"user":tone['document_tone']['tone_categories']
 		}
 		#print(json.dumps(context['user'][1]['category_name'],indent=4))
-		conv1 = conversation_fun()['x']
-		conv2 = conversation_fun()['y']
-		response = conv1.message(workspace_id = conv2, message_input={'text': request.form['message']},context = context)
+		conv_workspace_id = 'e5fa2b42-e839-4e1b-9c6d-4d3ca9a93330'
+
+		response = conversation().message(workspace_id = conv_workspace_id, message_input={'text': request.form['message']},context = context)
 		
 		file = open('static/media/output.wav','wb+')
 		file.seek(0)
