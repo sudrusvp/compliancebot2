@@ -24,7 +24,6 @@ def main_page():
 		tone = tone_analyzer1.tone( text = request.form['message'])
 		#print(json.dumps(tone,indent=2))
 		context = {
-			"node":"name_node"
 			"user":tone['document_tone']['tone_categories']
 		}
 		#print(json.dumps(context['user'][1]['category_name'],indent=4))
