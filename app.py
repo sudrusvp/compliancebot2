@@ -29,12 +29,12 @@ def main_page():
 		#print(json.dumps(context['user'][1]['category_name'],indent=4))
 		conv_workspace_id = 'e5fa2b42-e839-4e1b-9c6d-4d3ca9a93330'
 
-		response = conversation().message(workspace_id = conv_workspace_id, message_input={'text': request.form['message']},context = context)
+		response = conversation_fun().message(workspace_id = conv_workspace_id, message_input={'text': request.form['message']},context = context)
 		
 		file = open('static/media/output.wav','wb+')
 		file.seek(0)
 		file.truncate()
-		file.write(text_to_speech().synthesize(str(response['output']['text'][0]),accept='audio/wav',voice='en-US_LisaVoice'));
+		file.write(text_to_speech_fun().synthesize(str(response['output']['text'][0]),accept='audio/wav',voice='en-US_LisaVoice'));
 		file.close()
 		
 		a = str(context['user'][0]['category_name']) + "--->" + str(context['user'][0]['tones'][0]['tone_name']) + "-" + str(round(context['user'][0]['tones'][0]['score'],2))
