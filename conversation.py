@@ -1,4 +1,5 @@
 from watson_developer_cloud import ConversationV1
+from json import JSONEncoder
 
 def conversation():
 	
@@ -8,11 +9,10 @@ def conversation():
 	version='2017-02-03')
 	
 	conv_workspace_id = 'e5fa2b42-e839-4e1b-9c6d-4d3ca9a93330'
-    
-    temp = {}
-    temp['x'] = conversation
-    temp['y'] = conv_workspace_id
-    
-    return_json = JSON.dumps(temp);
+
+	return_json = JSONEncoder().encode({
+  	"x": conversation, 
+  	"y": conv_workspace_id
+	})
 
 	return return_json
