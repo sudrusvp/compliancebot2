@@ -1,4 +1,3 @@
-import json
 import urllib
 import os
 import os.path
@@ -21,18 +20,18 @@ def main_page():
 
 	elif request.method == 'POST':
 		
-		tone = tone_analyzer1.tone( text = request.form['message'])
+		tone = tone_analyz().tone( text = request.form['message'])
 		#print(json.dumps(tone,indent=2))
 		context = {
 			"user":tone['document_tone']['tone_categories']
 		}
 		#print(json.dumps(context['user'][1]['category_name'],indent=4))
-		response = conversation.message(workspace_id = conv_workspace_id, message_input={'text': request.form['message']},context = context)
+		response = conversation()['x'].message(workspace_id = conversation()['y'], message_input={'text': request.form['message']},context = context)
 		
 		file = open('static/media/output.wav','wb+')
 		file.seek(0)
 		file.truncate()
-		file.write(text_to_speech.synthesize(str(response['output']['text'][0]),accept='audio/wav',voice='en-US_LisaVoice'));
+		file.write(text_to_speech().synthesize(str(response['output']['text'][0]),accept='audio/wav',voice='en-US_LisaVoice'));
 		file.close()
 		
 		a = str(context['user'][0]['category_name']) + "--->" + str(context['user'][0]['tones'][0]['tone_name']) + "-" + str(round(context['user'][0]['tones'][0]['score'],2))
