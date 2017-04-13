@@ -91,19 +91,10 @@ def main_page():
 #			i+=1
 #		
 #		final_socialtone = str(context['user'][2]['tones'][j]['tone_name']) + "-" + str(round(context['user'][2]['tones'][j]['score'],2))
-		
-		if response['intents'] and response['intents'][0]['confidence']:
-			confidence = str(round(response['intents'][0]['confidence'] * 100))
-			response = str(response['output']['text'][0] + "\n" + "<HTML><BODY><hr style='height: 7px;border: 0;box-shadow: 0 10px 10px -10px white inset;width:270px;margin-left:0px'></body></html>I'm "  + confidence + "% certain about this answer!")
-			newline = "<html><body><br></body></html>"
-			response = response + newline + a + " " + b + " "+ c + " "+ d + " "+ e 
-			response = response + newline + f + " " + g + " "+ h
-			response = response + newline + i + " " + j + " "+ k + " "+ l + " "+ m
-#			response = response + newline + " detected " + final_emotiontone + newline + " detected " + final_langtone + newline + " detected " + final_socialtone
-			response = response + newline + "<html><body><hr></body></html>"
-			script1 = """<html><head><link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css'>
+		script1 = """<html><head><link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css'>
 			</head>
 			<body>
+			<hr>
 			<a href='#' class='btn btn-info btn-lg' onclick='yes()'>
           	<span class='glyphicon glyphicon-thumbs-up'></span> Yes
         	</a>
@@ -112,10 +103,8 @@ def main_page():
         	</a>
 			</body>
 			</html>"""
-			
-			response = response + script1
-			
-			script2 = """ <html><head>
+
+		script2 = """ <html><head>
 			<style>
 			.button {
 			  display: inline-block;
@@ -152,18 +141,28 @@ def main_page():
 			</script>
 			</head>
 			<hr>
-			<input class="button button5" type="button" value="PLAY" onclick="play()">
-			<input class="button button5" type="button" value="STOP" onclick="pause()">
+			<input class="button button5" type="button" value="Play" onclick="play()">
+			<input class="button button5" type="button" value="Stop" onclick="pause()">
 			</html>"""
 			
-			response = response + script2
+		if response['intents'] and response['intents'][0]['confidence']:
+			confidence = str(round(response['intents'][0]['confidence'] * 100))
+			response = str(response['output']['text'][0] + "\n" + "<HTML><BODY><hr style='height: 7px;border: 0;box-shadow: 0 10px 10px -10px white inset;width:270px;margin-left:0px'></body></html>I'm "  + confidence + "% certain about this answer!")
+			newline = "<html><body><br></body></html>"
+			response = response + newline + a + " " + b + " "+ c + " "+ d + " "+ e 
+			response = response + newline + f + " " + g + " "+ h
+			response = response + newline + i + " " + j + " "+ k + " "+ l + " "+ m
+#			response = response + newline + " detected " + final_emotiontone + newline + " detected " + final_langtone + newline + " detected " + final_socialtone
+			response = response + newline
+			
+			response = response + script1+script2
 			return str(response)
 			
 		#else
 			#return str(response)
-			
+		response = str(response['output']['text'][0]) + script2
 		print(json.dumps(response,indent=2))
-		return str(response['output']['text'][0])
+		return response
 		
 
 if __name__ == "__main__":
