@@ -21,7 +21,7 @@ def main_page():
 
 	elif request.method == 'POST':
 		
-		tone = tone_analyzer.tone( text = request.form['message'])
+		tone = tone_analyzer1.tone( text = request.form['message'])
 		#print(json.dumps(tone,indent=2))
 		context = {
 			"user":tone['document_tone']['tone_categories']
