@@ -116,6 +116,22 @@ def main_page():
 			response = response + script1
 			
 			script2 = """ <html><head>
+			<style>
+			.button {
+				background-color: #4CAF50; /* Green */
+			    border: none;
+			    color: white;
+			    padding: 15px 32px;
+			    text-align: center;
+			    text-decoration: none;
+			    display: inline-block;
+			    font-size: 16px;
+			    margin: 4px 2px;
+			    cursor: pointer;
+				}
+				.button5 {border-radius: 50%;}
+			</style>
+			</style>
 			<script type='text/javascript'>
 			var src = "static/media/output.wav?cache-buster=" + new Date().getTime()
 			var audio = new Audio(src);
@@ -128,8 +144,8 @@ def main_page():
 			</script>
 			</head>
 			<hr>
-			<input type="button" value="PLAY"  onclick="play()">
-			<input type="button" value="PAUSE"  onclick="pause()">
+			<input class="button button5" type="button" value="PLAY" onclick="play()">
+			<input class="button button5" type="button" value="STOP" onclick="pause()">
 			</html>"""
 			
 			response = response + script2
