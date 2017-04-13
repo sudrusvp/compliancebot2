@@ -9,7 +9,10 @@ def conversation():
 	
 	conv_workspace_id = 'e5fa2b42-e839-4e1b-9c6d-4d3ca9a93330'
     
-    temp={ "x": conversation,"y": conv_workspace_id }
-    return_json=JSON.stringify(temp);
+    temp = {}
+    temp['x'] = conversation
+    temp['y'] = conv_workspace_id
+    
+    return_json = JSON.dumps(temp);
 
 	return return_json
