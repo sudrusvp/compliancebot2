@@ -9,6 +9,7 @@ def conversation():
 	
 	conv_workspace_id = 'e5fa2b42-e839-4e1b-9c6d-4d3ca9a93330'
     
-    "return_json":{"x": conversation,"y": conv_workspace_id}
+    temp={ "x": conversation,"y": conv_workspace_id }
+    return_json=JSON.stringify(temp);
 
 	return return_json
