@@ -120,7 +120,7 @@ def main_page():
 			.button {
 			  display: inline-block;
 			  padding: 15px 25px;
-			  font-size: 17px;
+			  font-size: 15px;
 			  cursor: pointer;
 			  text-align: center;
 			  text-decoration: none;
@@ -128,7 +128,7 @@ def main_page():
 			  color: #fff;
 			  background-color: #ADD8E6;
 			  border: none;
-			  border-radius: 15px;
+			  border-radius: 12px;
 			  box-shadow: 0 9px #fff;
 			}
 			
