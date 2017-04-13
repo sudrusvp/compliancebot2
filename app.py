@@ -5,7 +5,7 @@ import sys
 import logging
 from conversation import conversation_fun
 from text_to_speech import text_to_speech_fun
-import tone_analyze import tone_analyze_fun
+from tone_analyze import tone_analyze_fun
 from flask import Flask
 from flask import render_template
 from flask import request, url_for, make_response
