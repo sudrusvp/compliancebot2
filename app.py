@@ -32,7 +32,7 @@ def main_page():
 		response = conversation_fun().message(workspace_id = conv_workspace_id, message_input={'text': request.form['message']},context = context)
 		
 		
-		print(json.dumps(response),indent=4)
+		print(json.dumps(response,indent=4))
 		file = open('static/media/output.wav','wb+')
 		file.seek(0)
 		file.truncate()
