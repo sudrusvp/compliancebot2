@@ -118,19 +118,27 @@ def main_page():
 			script2 = """ <html><head>
 			<style>
 			.button {
-				background-color: #4CAF50; /* Green */
-			    border: none;
-			    color: white;
-			    padding: 15px 32px;
-			    text-align: center;
-			    text-decoration: none;
-			    display: inline-block;
-			    font-size: 16px;
-			    margin: 4px 2px;
-			    cursor: pointer;
-				}
-				.button5 {border-radius: 50%;}
-			</style>
+			  display: inline-block;
+			  padding: 15px 25px;
+			  font-size: 24px;
+			  cursor: pointer;
+			  text-align: center;
+			  text-decoration: none;
+			  outline: none;
+			  color: #fff;
+			  background-color: #ADD8E6;
+			  border: none;
+			  border-radius: 15px;
+			  box-shadow: 0 9px #fff;
+			}
+			
+			.button:hover {background-color: #3e8e41}
+			
+			.button:active {
+			  background-color: #3e8e41;
+			  box-shadow: 0 5px #666;
+			  transform: translateY(4px);
+			}
 			</style>
 			<script type='text/javascript'>
 			var src = "static/media/output.wav?cache-buster=" + new Date().getTime()
