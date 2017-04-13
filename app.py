@@ -3,9 +3,9 @@ import os
 import os.path
 import sys
 import logging
-import conversation
-import text_to_speech
-import tone_analyze
+from conversation import conversation_fun
+from text_to_speech import text_to_speech_fun
+import tone_analyze import tone_analyze_fun
 from flask import Flask
 from flask import render_template
 from flask import request, url_for, make_response
@@ -20,15 +20,15 @@ def main_page():
 
 	elif request.method == 'POST':
 		
-		tone_analyzer1 = tone_analyze()
+		tone_analyzer1 = tone_analyze_fun()
 		tone = tone_analyzer1.tone( text = request.form['message'])
 		#print(json.dumps(tone,indent=2))
 		context = {
 			"user":tone['document_tone']['tone_categories']
 		}
 		#print(json.dumps(context['user'][1]['category_name'],indent=4))
-		conv1 = conversation()['x']
-		conv2 = conversation()['y']
+		conv1 = conversation_fun()['x']
+		conv2 = conversation_fun()['y']
 		response = conv1.message(workspace_id = conv2, message_input={'text': request.form['message']},context = context)
 		
 		file = open('static/media/output.wav','wb+')
