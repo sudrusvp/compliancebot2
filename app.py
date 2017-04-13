@@ -20,13 +20,16 @@ def main_page():
 
 	elif request.method == 'POST':
 		
-		tone = tone_analyze().tone( text = request.form['message'])
+		tone_analyzer1 = tone_analyze()
+		tone = tone_analyzer1.tone( text = request.form['message'])
 		#print(json.dumps(tone,indent=2))
 		context = {
 			"user":tone['document_tone']['tone_categories']
 		}
 		#print(json.dumps(context['user'][1]['category_name'],indent=4))
-		response = conversation()['x'].message(workspace_id = conversation()['y'], message_input={'text': request.form['message']},context = context)
+		conv1 = conversation()['x']
+		conv2 = conversation()['y']
+		response = conv1.message(workspace_id = conv2, message_input={'text': request.form['message']},context = context)
 		
 		file = open('static/media/output.wav','wb+')
 		file.seek(0)
