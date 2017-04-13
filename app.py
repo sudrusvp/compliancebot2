@@ -141,8 +141,8 @@ def main_page():
 			</script>
 			</head>
 			<hr>
-			<input class="button button5" type="button" value="Play" onclick="play()">
-			<input class="button button5" type="button" value="Stop" onclick="pause()">
+			<input class="button button5" type="button" value="PLAY" onclick="play()">
+			<input class="button button5" type="button" value="PAUSE" onclick="pause()">
 			</html>"""
 			
 		if response['intents'] and response['intents'][0]['confidence']:
@@ -161,7 +161,6 @@ def main_page():
 		#else
 			#return str(response)
 		response = str(response['output']['text'][0]) + script2
-		print(json.dumps(response,indent=2))
 		return response
 		
 
