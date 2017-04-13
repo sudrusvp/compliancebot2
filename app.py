@@ -24,6 +24,7 @@ def main_page():
 		tone = tone_analyzer1.tone( text = request.form['message'])
 		#print(json.dumps(tone,indent=2))
 		context = {
+			"node":"name_node"
 			"user":tone['document_tone']['tone_categories']
 		}
 		#print(json.dumps(context['user'][1]['category_name'],indent=4))
@@ -31,6 +32,8 @@ def main_page():
 
 		response = conversation_fun().message(workspace_id = conv_workspace_id, message_input={'text': request.form['message']},context = context)
 		
+		
+		print(json.dumps(response),indent=4)
 		file = open('static/media/output.wav','wb+')
 		file.seek(0)
 		file.truncate()
