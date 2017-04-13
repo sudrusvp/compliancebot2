@@ -115,12 +115,21 @@ def main_page():
 			
 			response = response + script1
 			
-			script2 = """ <html><head><script type='text/javascript'>
+			script2 = """ <html><head>
+			<script type='text/javascript'>
 			var src = "static/media/output.wav?cache-buster=" + new Date().getTime()
 			var audio = new Audio(src);
-			audio.play();
+			function play(){
+				audio.play();
+			}
+			function pause(){
+				audio.pause();
+			}
 			</script>
 			</head>
+			<hr>
+			<input type="button" value="PLAY"  onclick="play()">
+			<input type="button" value="PAUSE"  onclick="pause()">
 			</html>"""
 			
 			response = response + script2
