@@ -24,9 +24,7 @@ def main_page():
 		tone_analyzer1 = tone_analyze_fun()
 		tone = tone_analyzer1.tone( text = request.form['message'])
 		#print(json.dumps(tone,indent=2))
-		temp_context = {
-			'a':'b'
-		}
+		temp_context = {}
 		json.dumps(temp_context)
 		if os.path.isfile("static/doc/context_file.json") and os.path.getsize("static/doc/context_file.json")>0:
 			print("*******************")
@@ -47,7 +45,7 @@ def main_page():
 		}
 		print("*******************")
 		print(context)
-		if temp_context['a'] != 'b':
+		if os.path.isfile("static/doc/context_file.json") and os.path.getsize("static/doc/context_file.json")>0:
 			context["temp_context"]=temp_context
 
 		#print(json.dumps(context['user'][1]['category_name'],indent=4))
