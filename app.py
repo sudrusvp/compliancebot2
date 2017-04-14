@@ -24,19 +24,32 @@ def main_page():
 		tone_analyzer1 = tone_analyze_fun()
 		tone = tone_analyzer1.tone( text = request.form['message'])
 		#print(json.dumps(tone,indent=2))
-		context = {
-			"next_node":"name",
+		temp_context={}
+		if os.path.isfile("static/doc/context.json") and os.path.getsize("static/doc/context.json")>0:
+			print("file found")
+			with open('static/doc/context.json', 'r') as content_file:
+				content = content_file.read()
+				content = json.dumps(content._dict_)
+				temp_context = content
+			
+		else:
+			print("file not found")
+		
+		tone_analyzer_context = {
 			"user":tone['document_tone']['tone_categories']
 		}
+		
+		context = jsonConcat(temp_context,tone_analyzer_context)
 		#print(json.dumps(context['user'][1]['category_name'],indent=4))
 		conv_workspace_id = 'e5fa2b42-e839-4e1b-9c6d-4d3ca9a93330'
 
 		response = conversation_fun().message(workspace_id = conv_workspace_id, message_input={'text': request.form['message']},context = context)
 		
-#		if response['intents'] and response['intents'][0]['intent']:
-#			intent_name = str(response['intents'][0]['intent'])
-#			if intent_name == "name":
-				
+		context_file=open("static/doc/context.json",'w')
+		context_file.seek(0)
+		context_file.truncate()
+		context_file.write(response['context'])
+		context_file.close()
 		
 		print(json.dumps(response,indent=4))
 		file = open('static/media/output.wav','wb+')
