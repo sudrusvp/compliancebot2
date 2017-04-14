@@ -24,35 +24,44 @@ def main_page():
 		tone_analyzer1 = tone_analyze_fun()
 		tone = tone_analyzer1.tone( text = request.form['message'])
 		#print(json.dumps(tone,indent=2))
-		temp_context={}
-		if os.path.isfile("static/doc/context.json") and os.path.getsize("static/doc/context.json")>0:
+		temp_context = {
+			'a':'b'
+		}
+		json.dumps(temp_context)
+		if os.path.isfile("static/doc/context_file.json") and os.path.getsize("static/doc/context_file.json")>0:
+			print("*******************")
 			print("file found")
-			with open('static/doc/context.json', 'r') as content_file:
-				content = content_file.read()
-				content = json.dumps(content._dict_)
-				temp_context = content
+			with open('static/doc/context_file.json', 'r') as cf:
+				temp_context = json.load(cf)
+				print("*******************")
+				print(json.dumps(temp_context,indent=2))
+				print("*******************")
+				print(type(temp_context))
 			
 		else:
+			print("*******************")
 			print("file not found")
 		
-		tone_analyzer_context = {
+		context = {
 			"user":tone['document_tone']['tone_categories']
 		}
-		
-		context = str(temp_context) + str(tone_analyzer_context)
-		context = json.dumps(context)  
-		context = json.loads(context)
+		print("*******************")
+		print(context)
+		if temp_context['a'] != 'b':
+			context["temp_context"]=temp_context
+
 		#print(json.dumps(context['user'][1]['category_name'],indent=4))
 		conv_workspace_id = 'e5fa2b42-e839-4e1b-9c6d-4d3ca9a93330'
 
 		response = conversation_fun().message(workspace_id = conv_workspace_id, message_input={'text': request.form['message']},context = context)
 		
-		context_file=open("static/doc/context.json",'w')
-		context_file.seek(0)
-		context_file.truncate()
-		context_file.write(response['context'])
-		context_file.close()
+		with open('static/doc/context_file.json', 'w') as f:
+			f.seek(0)
+			f.truncate()
+			json.dump(response['context'], f)
+			f.close()
 		
+		print("*******************")
 		print(json.dumps(response,indent=4))
 		file = open('static/media/output.wav','wb+')
 		file.seek(0)
