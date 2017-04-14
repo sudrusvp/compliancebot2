@@ -39,7 +39,9 @@ def main_page():
 			"user":tone['document_tone']['tone_categories']
 		}
 		
-		context = jsonConcat(temp_context,tone_analyzer_context)
+		context = str(temp_context) + str(tone_analyzer_context)
+		context = json.dumps(context)  
+		context = json.loads(context)
 		#print(json.dumps(context['user'][1]['category_name'],indent=4))
 		conv_workspace_id = 'e5fa2b42-e839-4e1b-9c6d-4d3ca9a93330'
 
