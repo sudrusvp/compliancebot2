@@ -26,6 +26,7 @@ def main_page():
 		#print(json.dumps(tone,indent=2))
 		context = {
 			"next_node":"name",
+			"next_node2":"name2",
 			"user":tone['document_tone']['tone_categories']
 		}
 		#print(json.dumps(context['user'][1]['category_name'],indent=4))
