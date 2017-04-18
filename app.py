@@ -6,6 +6,7 @@ import sys
 import logging
 from conversation import conversation_fun
 from text_to_speech import text_to_speech_fun
+from spcch_to_text import speech_to_text_fun
 from tone_analyze import tone_analyze_fun
 from flask import Flask
 from flask import render_template
@@ -114,6 +115,16 @@ def main_page():
 		file.write(text_to_speech_fun().synthesize(str(response['output']['text'][0]),accept='audio/wav',voice='en-US_LisaVoice'));
 		file.close()
 		
+		
+		file = open('static/media/output.wav','rb')
+#		file.seek(0)
+#		file.truncate()
+		print("start printing speech to text output")
+		print(json.dumps(speech_to_text_fun().recognize(
+        	file, content_type='audio/wav', timestamps=True,
+			word_confidence=True),
+			indent=2))
+        file.close();
 		a = str(context['user'][0]['category_name']) + "--->" + str(context['user'][0]['tones'][0]['tone_name']) + "-" + str(round(context['user'][0]['tones'][0]['score'],2))
 		b = str(context['user'][0]['tones'][1]['tone_name']) + "-" + str(round(context['user'][0]['tones'][1]['score'],2))
 		c = str(context['user'][0]['tones'][2]['tone_name']) + "-" + str(round(context['user'][0]['tones'][2]['score'],2))
