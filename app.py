@@ -40,9 +40,53 @@ def main_page():
 #			print("*******************")
 #			print("file not found")
 		
+
+		
 		context = {
 			"user":tone['document_tone']['tone_categories']
 		}
+		
+		#for emotion tone
+		i = 0
+		j = 0
+		max = 0.0
+		while i != 5:
+			temp = round(context['user'][0]['tones'][i]['score'],2)
+			if temp >= max:
+				max = temp
+				j = i
+			i+=1
+		
+#		final_emotiontone = str(context['user'][0]['tones'][j]['tone_name']) + "-" + str(round(context['user'][0]['tones'][j]['score'],2))
+		context["current"]=str(context['user'][0]['tones'][j]['tone_name'])
+#		
+#		#for language tone
+#		i = 0
+#		j = 0
+#		max = 0.0
+#		while i != 3:
+#			temp = round(context['user'][1]['tones'][i]['score'],2)
+#			if temp >= max:
+#				max = temp
+#				j = i
+#			i+=1
+#		
+#		final_langtone = str(context['user'][1]['tones'][j]['tone_name']) + "-" + str(round(context['user'][1]['tones'][j]['score'],2))
+#		
+#		#for social tone
+#		i = 0
+#		j = 0
+#		max = 0.0
+#		while i != 5:
+#			temp = round(context['user'][2]['tones'][i]['score'],2)
+#			if temp >= max:
+#				max = temp
+#				j = i
+#			i+=1
+#		
+#		final_socialtone = str(context['user'][2]['tones'][j]['tone_name']) + "-" + str(round(context['user'][2]['tones'][j]['score'],2))
+
+
 #		print("*******************")
 #		print(context)
 #		if os.path.isfile("static/doc/context_file.json") and os.path.getsize("static/doc/context_file.json")>0:
@@ -83,44 +127,7 @@ def main_page():
 		l = str(context['user'][2]['tones'][3]['tone_name']) + "-" + str(round(context['user'][2]['tones'][3]['score'],2))
 		m = str(context['user'][2]['tones'][4]['tone_name']) + "-" + str(round(context['user'][2]['tones'][4]['score'],2))
 		
-#		#for emotion tone
-#		i = 0
-#		j = 0
-#		max = 0.0
-#		while i != 5:
-#			temp = round(context['user'][0]['tones'][i]['score'],2)
-#			if temp >= max:
-#				max = temp
-#				j = i
-#			i+=1
-#		
-#		final_emotiontone = str(context['user'][0]['tones'][j]['tone_name']) + "-" + str(round(context['user'][0]['tones'][j]['score'],2))
-#		
-#		#for language tone
-#		i = 0
-#		j = 0
-#		max = 0.0
-#		while i != 3:
-#			temp = round(context['user'][1]['tones'][i]['score'],2)
-#			if temp >= max:
-#				max = temp
-#				j = i
-#			i+=1
-#		
-#		final_langtone = str(context['user'][1]['tones'][j]['tone_name']) + "-" + str(round(context['user'][1]['tones'][j]['score'],2))
-#		
-#		#for social tone
-#		i = 0
-#		j = 0
-#		max = 0.0
-#		while i != 5:
-#			temp = round(context['user'][2]['tones'][i]['score'],2)
-#			if temp >= max:
-#				max = temp
-#				j = i
-#			i+=1
-#		
-#		final_socialtone = str(context['user'][2]['tones'][j]['tone_name']) + "-" + str(round(context['user'][2]['tones'][j]['score'],2))
+
 		script1 = """<html><head><link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css'>
 			</head>
 			<body>
