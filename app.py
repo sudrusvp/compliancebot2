@@ -107,10 +107,10 @@ def main_page():
 #			f.close()
 		
 #		print("*******************")
-#		print(json.dumps(response,indent=4))
+		print(json.dumps(response,indent=4))
 		file = open('static/media/output.wav','wb+')
-		file.seek(0)
-		file.truncate()
+#		file.seek(0)
+#		file.truncate()
 		file.write(text_to_speech_fun().synthesize(str(response['output']['text'][0]),accept='audio/wav',voice='en-US_LisaVoice'));
 		file.close()
 		
@@ -197,11 +197,14 @@ def main_page():
 			
 			response = response + script1+script2
 			return str(response)
-			
-		#else
-			#return str(response)
-		response = str(response['output']['text'][0]) + script2
-		return response
+		
+		response = str(response['output']['text'][0])
+		newline = "<html><body><br></body></html>"
+		response = response + newline + a + " " + b + " "+ c + " "+ d + " "+ e 
+		response = response + newline + f + " " + g + " "+ h
+		response = response + newline + i + " " + j + " "+ k + " "+ l + " "+ m
+		response = response + script2
+		return str(response)
 		
 
 if __name__ == "__main__":
