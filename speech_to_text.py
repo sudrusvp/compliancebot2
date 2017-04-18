@@ -6,5 +6,4 @@ def speech_to_text_fun():
 		username='c4a1eb85-0246-4488-8f9d-fd6ce44a9ff6',
 		password='TzQgfJ53bwXtD',
 		x_watson_learning_opt_out=False)
-		
-		return speech_to_text
+	return speech_to_text
