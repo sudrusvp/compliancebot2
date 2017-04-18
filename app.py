@@ -24,43 +24,43 @@ def main_page():
 		tone_analyzer1 = tone_analyze_fun()
 		tone = tone_analyzer1.tone( text = request.form['message'])
 		#print(json.dumps(tone,indent=2))
-		temp_context = {}
-		json.dumps(temp_context)
-		if os.path.isfile("static/doc/context_file.json") and os.path.getsize("static/doc/context_file.json")>0:
-			print("*******************")
-			print("file found")
-			with open('static/doc/context_file.json', 'r') as cf:
-				temp_context = json.load(cf)
-				print("*******************")
-				print(json.dumps(temp_context,indent=2))
-				print("*******************")
-				print(type(temp_context))
-			
-		else:
-			print("*******************")
-			print("file not found")
+#		temp_context = {}
+#		json.dumps(temp_context)
+#		if os.path.isfile("static/doc/context_file.json") and os.path.getsize("static/doc/context_file.json")>0:
+#			print("*******************")
+#			print("file found")
+#			with open('static/doc/context_file.json', 'r') as cf:
+#				temp_context = json.load(cf)
+#				print("*******************")
+#				print(json.dumps(temp_context,indent=2))
+#				print("*******************")
+#				print(type(temp_context))
+#			
+#		else:
+#			print("*******************")
+#			print("file not found")
 		
 		context = {
 			"user":tone['document_tone']['tone_categories']
 		}
-		print("*******************")
-		print(context)
-		if os.path.isfile("static/doc/context_file.json") and os.path.getsize("static/doc/context_file.json")>0:
-			context["temp_context"]=temp_context
+#		print("*******************")
+#		print(context)
+#		if os.path.isfile("static/doc/context_file.json") and os.path.getsize("static/doc/context_file.json")>0:
+#			context["temp_context"]=temp_context
 
 		#print(json.dumps(context['user'][1]['category_name'],indent=4))
 		conv_workspace_id = 'e5fa2b42-e839-4e1b-9c6d-4d3ca9a93330'
 
 		response = conversation_fun().message(workspace_id = conv_workspace_id, message_input={'text': request.form['message']},context = context)
 		
-		with open('static/doc/context_file.json', 'w') as f:
-			f.seek(0)
-			f.truncate()
-			json.dump(response['context'], f)
-			f.close()
+#		with open('static/doc/context_file.json', 'w') as f:
+#			f.seek(0)
+#			f.truncate()
+#			json.dump(response['context'], f)
+#			f.close()
 		
-		print("*******************")
-		print(json.dumps(response,indent=4))
+#		print("*******************")
+#		print(json.dumps(response,indent=4))
 		file = open('static/media/output.wav','wb+')
 		file.seek(0)
 		file.truncate()
