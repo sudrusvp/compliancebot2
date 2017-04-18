@@ -200,7 +200,7 @@ def main_page():
 		
 		response = str(response['output']['text'][0])
 		newline = "<html><body><br></body></html>"
-		response = response + newline + a + " " + b + " "+ c + " "+ d + " "+ e 
+		response = response + "<html><hr></html>"newline + a + " " + b + " "+ c + " "+ d + " "+ e 
 		response = response + newline + f + " " + g + " "+ h
 		response = response + newline + i + " " + j + " "+ k + " "+ l + " "+ m
 		response = response + script2
