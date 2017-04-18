@@ -6,7 +6,7 @@ import sys
 import logging
 from conversation import conversation_fun
 from text_to_speech import text_to_speech_fun
-from spcch_to_text import speech_to_text_fun
+from speech_to_text import speech_to_text_fun
 from tone_analyze import tone_analyze_fun
 from flask import Flask
 from flask import render_template
