@@ -121,7 +121,7 @@ def main_page():
 #		file.truncate()
 		print("start printing speech to text output")
 		print(json.dumps(speech_to_text_fun().recognize(
-        	file, content_type='audio/wav', timestamps=True,
+			file, content_type='audio/wav', timestamps=True,
 			word_confidence=True),
 			indent=2))
         file.close();
