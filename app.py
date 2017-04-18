@@ -61,6 +61,7 @@ def main_page():
 		context["current"]=str(context['user'][0]['tones'][j]['tone_name'])
 		context["next_node"]="name"
 		context["next_node2"]="name2"
+		context["name"]="name"
 #		
 #		#for language tone
 #		i = 0
