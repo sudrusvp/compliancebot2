@@ -124,7 +124,7 @@ def main_page():
 			file, content_type='audio/wav', timestamps=True,
 			word_confidence=True),
 			indent=2))
-        file.close();
+        file.close()
 		a = str(context['user'][0]['category_name']) + "--->" + str(context['user'][0]['tones'][0]['tone_name']) + "-" + str(round(context['user'][0]['tones'][0]['score'],2))
 		b = str(context['user'][0]['tones'][1]['tone_name']) + "-" + str(round(context['user'][0]['tones'][1]['score'],2))
 		c = str(context['user'][0]['tones'][2]['tone_name']) + "-" + str(round(context['user'][0]['tones'][2]['score'],2))
