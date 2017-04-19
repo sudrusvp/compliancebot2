@@ -208,7 +208,7 @@ def main_page():
 			response = response + newline + f + " " + g + " "+ h
 			response = response + newline + i + " " + j + " "+ k + " "+ l + " "+ m
 #			response = response + newline + " detected " + final_emotiontone + newline + " detected " + final_langtone + newline + " detected " + final_socialtone
-			response = response + newline + script1+script2+"<html></hr></html>" + string1
+			response = response + newline + script1+script2+"<html><hr></html>" + string1
 			return str(response)
 		
 		response = str(response['output']['text'][0])
@@ -216,7 +216,7 @@ def main_page():
 		response = response + "<html><hr></html>" + newline + a + " " + b + " "+ c + " "+ d + " "+ e 
 		response = response + newline + f + " " + g + " "+ h
 		response = response + newline + i + " " + j + " "+ k + " "+ l + " "+ m
-		response = response + script2+ "<html></hr></html>"+string1
+		response = response + script2+ "<html><hr></html>"+string1
 		return str(response)
 		
 
