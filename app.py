@@ -124,7 +124,7 @@ def main_page():
 			n = speech_to_text_fun().recognize(file2, content_type='audio/wav', timestamps=True,word_confidence=True)
 			print(json.dumps(n,indent=4))
 			n1 = str(n['results'][0]['alternatives'][0]['transcript'])
-			n1 = str(n['results'][0]['alternatives'][0]['confidence'])
+			n2 = str(n['results'][0]['alternatives'][0]['confidence'])
 			string1 = "Transcript is --> "+ n1 + "\n" + "with" + n2*100 + "% confidence"
 			print(string1)
 			file2.close()
