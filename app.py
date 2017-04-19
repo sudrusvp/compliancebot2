@@ -4,6 +4,7 @@ import os
 import os.path
 import sys
 import logging
+from os.path import join, dirname
 from conversation import conversation_fun
 from text_to_speech import text_to_speech_fun
 from speech_to_text import speech_to_text_fun
@@ -116,15 +117,10 @@ def main_page():
 		file.close()
 		
 		
-		file = open('static/media/output.wav','rb')
-#		file.seek(0)
-#		file.truncate()
-		print("start printing speech to text output")
-		print(json.dumps(speech_to_text_fun().recognize(
-			file, content_type='audio/wav', timestamps=True,
-			word_confidence=True),
-			indent=2))
-		file.close()
+		with open(join(dirname(__file__), '../resources/speech.wav'),'rb') as file2:
+			print("start printing speech to text output")
+			print(json.dumps(speech_to_text_fun().recognize(file2, content_type='audio/wav', timestamps=True,word_confidence=True),indent=2))
+			file2.close()
 		a = str(context['user'][0]['category_name']) + "--->" + str(context['user'][0]['tones'][0]['tone_name']) + "-" + str(round(context['user'][0]['tones'][0]['score'],2))
 		b = str(context['user'][0]['tones'][1]['tone_name']) + "-" + str(round(context['user'][0]['tones'][1]['score'],2))
 		c = str(context['user'][0]['tones'][2]['tone_name']) + "-" + str(round(context['user'][0]['tones'][2]['score'],2))
