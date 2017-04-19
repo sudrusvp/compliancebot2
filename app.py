@@ -125,7 +125,7 @@ def main_page():
 			print(json.dumps(n,indent=4))
 			n1 = str(n['results'][0]['alternatives'][0]['transcript'])
 			n2 = str(n['results'][0]['alternatives'][0]['confidence'])
-			string1 = "Transcript is --> "+ n1 + "\n" + "with" + n2*100 + "% confidence"
+			string1 = "Transcript is --> "+ n1 + "\n" + "with" + n2 + "confidence"
 			print(string1)
 			file2.close()
 		a = str(context['user'][0]['category_name']) + "--->" + str(context['user'][0]['tones'][0]['tone_name']) + "-" + str(round(context['user'][0]['tones'][0]['score'],2))
@@ -199,7 +199,7 @@ def main_page():
 			<input class="button button5" type="button" value="PLAY" onclick="play()">
 			<input class="button button5" type="button" value="PAUSE" onclick="pause()">
 			</html>"""
-			
+		
 		if response['intents'] and response['intents'][0]['confidence']:
 			confidence = str(round(response['intents'][0]['confidence'] * 100))
 			response = str(response['output']['text'][0] + "\n" + "<HTML><BODY><hr style='height: 7px;border: 0;box-shadow: 0 10px 10px -10px white inset;width:270px;margin-left:0px'></body></html>I'm "  + confidence + "% certain about this answer!")
@@ -208,9 +208,7 @@ def main_page():
 			response = response + newline + f + " " + g + " "+ h
 			response = response + newline + i + " " + j + " "+ k + " "+ l + " "+ m
 #			response = response + newline + " detected " + final_emotiontone + newline + " detected " + final_langtone + newline + " detected " + final_socialtone
-			response = response + newline
-			
-			response = response + script1+script2
+			response = response + newline + script1+script2+"<html></hr></html>" + string1
 			return str(response)
 		
 		response = str(response['output']['text'][0])
@@ -218,7 +216,7 @@ def main_page():
 		response = response + "<html><hr></html>" + newline + a + " " + b + " "+ c + " "+ d + " "+ e 
 		response = response + newline + f + " " + g + " "+ h
 		response = response + newline + i + " " + j + " "+ k + " "+ l + " "+ m
-		response = response + script2
+		response = response + script2+ "<html></hr></html>"+string1
 		return str(response)
 		
 
