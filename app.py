@@ -118,7 +118,7 @@ def main_page():
 		
 		string1=""
 		
-		with open(join(dirname(__file__), 'static/media/what_ecm.wav'),'rb') as file2:
+		with open(join(dirname(__file__), 'static/media/hello.wav'),'rb') as file2:
 			print("start printing speech to text output")
 #			print(json.dumps(speech_to_text_fun().recognize(file2, content_type='audio/wav', timestamps=True,word_confidence=True),indent=2))
 			n = speech_to_text_fun().recognize(file2, content_type='audio/wav', timestamps=True,word_confidence=True)
