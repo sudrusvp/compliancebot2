@@ -111,8 +111,8 @@ def main_page():
 #		print("*******************")
 		print(json.dumps(response,indent=4))
 		file = open('static/media/output.wav','wb+')
-#		file.seek(0)
-#		file.truncate()
+		file.seek(0)
+		file.truncate()
 		file.write(text_to_speech_fun().synthesize(str(response['output']['text'][0]),accept='audio/wav',voice='en-US_LisaVoice'));
 		file.close()
 		
