@@ -121,7 +121,7 @@ def main_page():
 			print("start printing speech to text output")
 #			print(json.dumps(speech_to_text_fun().recognize(file2, content_type='audio/wav', timestamps=True,word_confidence=True),indent=2))
 			n = speech_to_text_fun().recognize(file2, content_type='audio/wav', timestamps=True,word_confidence=True)
-			print(json.dumps(n,indents=4))
+			print(json.dumps(n,indent=4))
 			n1 = str(n['results'][0]['alternatives'][0]['transcript'])
 			print(n1)
 			file2.close()
