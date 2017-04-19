@@ -117,7 +117,7 @@ def main_page():
 		file.close()
 		
 		
-		with open(join(dirname(__file__), '../resources/speech.wav'),'rb') as file2:
+		with open(join(dirname(__file__), 'static/media/output.wav'),'rb') as file2:
 			print("start printing speech to text output")
 			print(json.dumps(speech_to_text_fun().recognize(file2, content_type='audio/wav', timestamps=True,word_confidence=True),indent=2))
 			file2.close()
@@ -179,6 +179,7 @@ def main_page():
 			<script type='text/javascript'>
 			var src = "static/media/output.wav?cache-buster=" + new Date().getTime()
 			var audio = new Audio(src);
+			audio.play();
 			function play(){
 				audio.play();
 			}
