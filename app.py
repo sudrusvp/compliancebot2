@@ -125,7 +125,7 @@ def main_page():
 			print(json.dumps(n,indent=4))
 			n1 = str(n['results'][0]['alternatives'][0]['transcript'])
 			n2 = str(n['results'][0]['alternatives'][0]['confidence'])
-			string1 = "Transcript--> "+ n1 + "\n" + "confidence-->" + n2 
+			string1 = "Transcript--> "+ n1 + "<html><br/></html>" + "confidence-->" + n2 
 			print(string1)
 			file2.close()
 		a = str(context['user'][0]['category_name']) + "--->" + str(context['user'][0]['tones'][0]['tone_name']) + "-" + str(round(context['user'][0]['tones'][0]['score'],2))
